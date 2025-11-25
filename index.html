@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Nutrition & Personalized Meal Planner</title>
+    <!-- Tailwind CSS CDN (Keep this for styling) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN (Keep this for progress charts) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- jsPDF CDN (Keep this for PDF download) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles (Referencing the external CSS file) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased text-slate-800">
+
+    <!-- Main Application Container -->
+    <div id="app-container">
+
+        <!-- ====================================================== -->
+        <!-- ==                 USER PROFILE PAGE                == -->
+        <!-- ====================================================== -->
+        <div id="profile-page" class="page active">
+            <div class="min-h-screen bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center p-4">
+                <div class="w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 space-y-6 transform transition-all hover:scale-105 duration-300">
+                    <div class="text-center">
+                         <svg class="mx-auto h-12 w-auto text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                        </svg>
+                        <h2 class="mt-4 text-3xl font-bold text-gray-900">Welcome to Smart Nutrition</h2>
+                        <p class="mt-2 text-sm text-gray-600">Let's set up your profile to personalize your meal plan.</p>
+                    </div>
+                    <form id="profile-form" class="space-y-4">
+                        <!-- Form fields here -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" id="name" placeholder="Name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                            <input type="number" id="age" placeholder="Age" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                             <input type="number" id="height" placeholder="Height (cm)" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                             <input type="number" id="weight" placeholder="Weight (kg)" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                        </div>
+                         <div>
+                            <select id="gender" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white">
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="activity-level" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white">
+                                <option value="" disabled selected>Select Activity Level</option>
+                                <option value="1.2">Sedentary (little or no exercise)</option>
+                                <option value="1.375">Lightly active (light exercise/sports 1-3 days/week)</option>
+                                <option value="1.55">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                                <option value="1.725">Very active (hard exercise/sports 6-7 days a week)</option>
+                                <option value="1.9">Extra active (very hard exercise/physical job)</option>
+                            </select>
+                        </div>
+                         <div>
+                            <select id="goal" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white">
+                                <option value="" disabled selected>Select Your Goal</option>
+                                <option value="loss">Weight Loss</option>
+                                <option value="maintain">Maintain Weight</option>
+                                <option value="gain">Weight Gain</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="diet-preference" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white">
+                                <option value="" disabled selected>Select Dietary Preference</option>
+                                <option value="vegetarian">Vegetarian</option>
+                                <option value="vegan">Vegan</option>
+                                <option value="non-vegetarian">Non-Vegetarian</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105">
+                            Create My Plan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================== -->
+        <!-- ==                 MAIN DASHBOARD VIEW              == -->
+        <!-- ====================================================== -->
+        <div id="main-app" class="page">
+            <div class="flex h-screen bg-gray-50">
+                <!-- Sidebar -->
+                <aside class="w-64 bg-white shadow-md flex-shrink-0">
+                    <div class="p-4 border-b">
+                        <h1 class="text-2xl font-bold text-green-600">Smart Nutrition</h1>
+                    </div>
+                    <nav class="mt-6">
+                        <a href="#dashboard" class="nav-link flex items-center px-6 py-3 text-gray-700 bg-gray-100 font-semibold">
+                            <svg class="sidebar-icon mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 1.5m1-1.5l1 1.5m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" /></svg>
+                            Meal Plan
+                        </a>
+                        <a href="#progress" class="nav-link flex items-center px-6 py-3 text-gray-500 hover:bg-gray-100 hover:font-semibold">
+                           <svg class="sidebar-icon mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                            Progress
+                        </a>
+                        <a href="#grocery" class="nav-link flex items-center px-6 py-3 text-gray-500 hover:bg-gray-100 hover:font-semibold">
+                             <svg class="sidebar-icon mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l.383-1.437M7.5 14.25L5.106 5.165A2.25 2.25 0 002.854 3H2.25" /></svg>
+                            Grocery List
+                        </a>
+                        <a href="#profile" class="nav-link flex items-center px-6 py-3 text-gray-500 hover:bg-gray-100 hover:font-semibold">
+                            <svg class="sidebar-icon mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            Profile
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="flex-1 overflow-y-auto">
+                    <div id="dashboard-content" class="main-content p-8">
+                        <!-- Dashboard content will be rendered here -->
+                    </div>
+                    <div id="progress-content" class="main-content hidden p-8">
+                        <!-- Progress content will be rendered here -->
+                    </div>
+                    <div id="grocery-content" class="main-content hidden p-8">
+                        <!-- Grocery content will be rendered here -->
+                    </div>
+                     <div id="profile-content" class="main-content hidden p-8">
+                        <!-- Profile content will be rendered here -->
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ====================================================== -->
+    <!-- ==               MODALS (Initially Hidden)          == -->
+    <!-- ====================================================== -->
+
+    <!-- Recipe Modal -->
+    <div id="recipe-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div id="recipe-modal-content" class="p-6">
+                <!-- Recipe details will be injected here -->
+            </div>
+             <!-- Gemini AI Chef Section -->
+            <div id="ai-chef-section" class="p-6 border-t border-gray-200 bg-green-50 rounded-b-lg">
+                <h4 class="font-semibold text-lg mb-3 text-green-800">✨ Ask the AI Chef</h4>
+                <div class="flex space-x-2">
+                    <input type="text" id="ai-chef-prompt" placeholder="e.g., Can I make this gluten-free?" class="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                    <button id="ai-chef-btn" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Ask</button>
+                </div>
+                <div id="ai-chef-response" class="mt-4 p-4 bg-white rounded-lg text-gray-700 min-h-[50px]">
+                    <!-- AI response will appear here -->
+                </div>
+            </div>
+            <div class="p-4 bg-gray-50 text-right">
+                <button onclick="closeModal('recipe-modal')" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Weight Modal -->
+    <div id="add-weight-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-sm">
+            <div class="p-6 space-y-4">
+                <h3 class="text-xl font-semibold">Log Your Weight</h3>
+                <p class="text-sm text-gray-600">Enter your current weight to track your progress.</p>
+                <input type="number" id="new-weight-input" placeholder="Enter weight in kg" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+            </div>
+            <div class="p-4 bg-gray-50 flex justify-end space-x-2">
+                <button onclick="closeModal('add-weight-modal')" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancel</button>
+                <button id="save-weight-btn" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Save</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gemini Regenerate Modal -->
+    <div id="gemini-regenerate-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">✨ Let's find something new!</h3>
+                <p class="text-sm text-gray-600 mb-4">What are you in the mood for? Tell the AI chef your cravings.</p>
+                <select id="meal-type-select" class="w-full mb-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 bg-white">
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="breakfast">Breakfast</option>
+                </select>
+                <input type="text" id="user-craving-input" placeholder="e.g., 'a spicy curry' or 'a light salad'" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                <div id="gemini-regenerate-status" class="mt-4 text-center"></div>
+            </div>
+            <div class="p-4 bg-gray-50 flex justify-end space-x-2">
+                <button onclick="closeModal('gemini-regenerate-modal')" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancel</button>
+                <button id="gemini-regenerate-btn" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Generate Meal</button>
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
